@@ -36,5 +36,8 @@ RUN npx prisma db seed
 # Expone el puerto de la aplicación
 EXPOSE 5000
 
-# Comando de inicio
-CMD ["node", "dist/src/main"]
+# Carga las variables de entorno en tiempo de ejecución
+ENV DATABASE_URL=${DATABASE_URL}
+
+# 🔥 Ejecutar migraciones y seeds al iniciar el contenedor
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/prisma/seed -- all && node dist/src/main"]

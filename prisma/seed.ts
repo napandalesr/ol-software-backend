@@ -1,6 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
-import { Statuses } from 'src/types/busubessmanTypes';
+
+enum Statuses {
+  ACTIVE = 'ACTIVE',
+  INACTIVE = 'INACTIVE',
+}
 
 const prisma = new PrismaClient();
 
