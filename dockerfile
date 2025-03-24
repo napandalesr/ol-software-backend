@@ -30,9 +30,6 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/package.json ./
 
-# Ingresa datos semilla
-RUN npx prisma db seed
-
 # Expone el puerto de la aplicación
 EXPOSE 5000
 
